@@ -31,4 +31,4 @@ jobs:
           MOLECULE_DISTRO: ${{ matrix.distro }}
         run: |
           molecule test
-        working-directory: ${{ env.ROLE_NAME }}
+        working-directory: "tsukune_ch.${{ env.ROLE_NAME }}"
