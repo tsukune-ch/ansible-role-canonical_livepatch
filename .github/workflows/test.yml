@@ -1,0 +1,33 @@
+---
+name: build
+on: [push]
+jobs:
+  test:
+    runs-on: ubuntu-18.04
+    env:
+      ROLE_NAME: canonical_livepatch
+    strategy:
+      matrix:
+        distro: [ubuntu1604, ubuntu1804, ubuntu2004]
+    steps:
+      - name: Checkout.
+        uses: actions/checkout@v2
+      - name: Setup python 3.x.
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+      - name: Install test dependencies.
+        run: >
+          sudo pip install
+          ansible-lint
+          docker
+          flake8
+          'molecule>=3.0.2.1,<4.0'
+          yamllint
+      - name: Rename to actual Ansible Galaxy role name from the project directory.
+        run: mv ansible-role-$ROLE_NAME tsukune_ch.$ROLE_NAME
+      - name: Run tests.
+        env:
+          MOLECULE_DISTRO: ${{ matrix.distro }}
+        run: |
+          molecule test

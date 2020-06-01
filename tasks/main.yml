@@ -1,0 +1,48 @@
+---
+- name: Ensure snapd is installed.
+  package:
+    name: snapd
+    state: present
+  register: canonical_livepatch_snapd_installed
+
+- name: Ensure snapd required dependencies are installed
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - fuse
+    - udev
+
+- name: Ensure udev is running.
+  systemd:
+    name: udev
+    state: started
+
+- name: Ensure snapd.seeded is running.
+  systemd:
+    name: snapd.seeded
+    state: started
+
+- name: Enable snapd and ensure it is running.
+  systemd:
+    name: snapd
+    state: started
+    enabled: true
+
+- name: Ensure Canonical Livepatch is installed using the Snap Store.
+  snap:
+    name: canonical-livepatch
+    state: present
+
+- name: Ensure Canonical Livepatch is running.
+  command: /snap/bin/canonical-livepatch status --verbose
+  ignore_errors: true
+  register: canonical_livepatch_status
+  changed_when: false
+
+- name: Ensure Canonical Livepatch is enabled.
+  command: /snap/bin/canonical-livepatch enable "{{ canonical_livepatch_token | quote }}"
+  no_log: true
+  when:
+    - canonical_livepatch_token | length > 0
+    - canonical_livepatch_status.stdout.find("Machine is not enabled.") != -1

@@ -1,0 +1,22 @@
+---
+- name: Converge
+  hosts: all
+  become: true
+
+  pre_tasks:
+    - name: Update apt cache.
+      apt:
+        update_cache: true
+        cache_valid_time: 600
+      when: ansible_os_family == 'Debian'
+
+    - name: Ensure build dependencies are installed.
+      package:
+        name:
+          - openssh-client
+          - openssh-server
+        state: present
+      when: ansible_os_family == 'Debian'
+
+  roles:
+    - role: tsukune_ch.canonical_livepatch
