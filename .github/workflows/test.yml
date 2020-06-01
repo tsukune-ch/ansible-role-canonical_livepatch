@@ -10,8 +10,10 @@ jobs:
       matrix:
         distro: [ubuntu1604, ubuntu1804, ubuntu2004]
     steps:
-      - name: Checkout.
+      - name: Checkout with the directory name of actual Ansible Galaxy role name.
         uses: actions/checkout@v2
+        with:
+          path: tsukune_ch.$ROLE_NAME
       - name: Setup python 3.x.
         uses: actions/setup-python@v2
         with:
@@ -24,11 +26,6 @@ jobs:
           flake8
           'molecule>=3.0.2.1,<4.0'
           yamllint
-      - name: Rename to actual Ansible Galaxy role name from the project directory.
-        run: |
-          cd ..
-          mv ansible-role-$ROLE_NAME tsukune_ch.$ROLE_NAME
-          cd tsukune_ch.$ROLE_NAME
       - name: Run tests.
         env:
           MOLECULE_DISTRO: ${{ matrix.distro }}
