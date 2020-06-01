@@ -25,7 +25,9 @@ jobs:
           'molecule>=3.0.2.1,<4.0'
           yamllint
       - name: Rename to actual Ansible Galaxy role name from the project directory.
-        run: mv ansible-role-$ROLE_NAME tsukune_ch.$ROLE_NAME
+        run: |
+          cd ..
+          mv ansible-role-$ROLE_NAME tsukune_ch.$ROLE_NAME
       - name: Run tests.
         env:
           MOLECULE_DISTRO: ${{ matrix.distro }}
