@@ -1,5 +1,6 @@
 ---
 galaxy_info:
+  role_name: canonical_livepatch
   author: tsukune-ch
   description: Canonical Livepatch installation and configuration.
   license: "license (MIT)"
