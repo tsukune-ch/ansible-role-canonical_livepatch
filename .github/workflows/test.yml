@@ -28,6 +28,7 @@ jobs:
         run: |
           cd ..
           mv ansible-role-$ROLE_NAME tsukune_ch.$ROLE_NAME
+          cd tsukune_ch.$ROLE_NAME
       - name: Run tests.
         env:
           MOLECULE_DISTRO: ${{ matrix.distro }}
