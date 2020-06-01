@@ -13,5 +13,6 @@ jobs:
       - name: Checkout with the directory name of actual Ansible Galaxy role name.
         uses: actions/checkout@v2
         with:
-          path: tsukune_ch.$ROLE_NAME
-      - run: ls
+          path: "tsukune_ch.${{ env.ROLE_NAME }}"
+      - name: ls
+      - name: pwd
