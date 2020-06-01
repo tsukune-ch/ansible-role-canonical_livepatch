@@ -14,5 +14,5 @@ jobs:
         uses: actions/checkout@v2
         with:
           path: "tsukune_ch.${{ env.ROLE_NAME }}"
-      - name: ls
-      - name: pwd
+      - run: ls
+      - run: pwd
