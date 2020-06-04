@@ -7,6 +7,7 @@ jobs:
     env:
       ROLE_NAME: canonical_livepatch
     strategy:
+      fail-fast: false
       matrix:
         distro: [ubuntu1604, ubuntu1804, ubuntu2004]
     steps:
