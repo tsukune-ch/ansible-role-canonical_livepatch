@@ -2,7 +2,7 @@
 
 ![build](https://github.com/tsukune-ch/ansible-role-canonical_livepatch/workflows/build/badge.svg?branch=master)
 
-Installs and configures [Canonical Livepatch Service](https://ubuntu.com/livepatch) on Ubuntu servers.
+Installs and configures the [Canonical Livepatch Service](https://ubuntu.com/livepatch) on Ubuntu servers.
 
 ## Requirements
 
