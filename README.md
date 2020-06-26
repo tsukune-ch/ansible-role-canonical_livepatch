@@ -19,7 +19,7 @@ The token under which Canonical Livepatch will use.
 If you don't have a token yet, you can get one [here](https://auth.livepatch.canonical.com/).
 
 When using this role with a public repository or a private repository managed by more than one person,
-I recommend that you encrypt this value using [ansible-vault](https://docs.ansible.com/ansible/latest/user_guide/vault.html).
+I strongly recommend that you encrypt this value using [ansible-vault](https://docs.ansible.com/ansible/latest/user_guide/vault.html).
 
 ## Dependencies
 
