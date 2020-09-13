@@ -15,5 +15,6 @@ galaxy_info:
     - livepatch
     - security
     - system
+    - ubuntu
 
 dependencies: []
