@@ -1,7 +1,7 @@
 ---
 galaxy_info:
   role_name: canonical_livepatch
-  author: tsukune-ch
+  author: tsukune_ch
   description: Canonical Livepatch installation and configuration.
   license: "license (MIT)"
   min_ansible_version: 2.9
