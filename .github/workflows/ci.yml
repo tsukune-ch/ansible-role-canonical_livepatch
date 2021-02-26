@@ -29,6 +29,7 @@ jobs:
       - name: Install test dependencies.
         run: >
           pip3 install
+          ansible
           ansible-lint
           docker
           flake8
