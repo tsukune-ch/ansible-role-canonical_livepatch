@@ -34,8 +34,10 @@ jobs:
           flake8
           'molecule[docker]>=3.0.2.1,<4.0'
           yamllint
-      - name: Run tests.
+      - name: Run Molecule tests.
         env:
+          PY_COLORS: '1'
+          ANSIBLE_FORCE_COLOR: '1'
           MOLECULE_DISTRO: ${{ matrix.distro }}
         run: |
           molecule test
