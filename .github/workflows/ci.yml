@@ -10,7 +10,7 @@ defaults:
     working-directory: 'tsukune_ch.canonical_livepatch'
 jobs:
   lint:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-18.04
     steps:
       - name: Checkout with the directory name of actual Ansible Galaxy role name.
         uses: actions/checkout@v2
