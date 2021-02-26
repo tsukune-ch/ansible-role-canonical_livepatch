@@ -55,7 +55,7 @@ jobs:
           ansible-lint
           docker
           flake8
-          'molecule[docker]>=3.0.2.1,<4.0'
+          'molecule[docker]>=3.2.3,<4.0'
           yamllint
       - name: Run Molecule tests.
         env:
