@@ -6,6 +6,29 @@ on:
   schedule:
     - cron: '0 5 * * 5'
 jobs:
+  lint:
+    runs-on: ubuntu-20.04
+    env:
+      ROLE_NAME: canonical_livepatch
+    steps:
+      - name: Checkout with the directory name of actual Ansible Galaxy role name.
+        uses: actions/checkout@v2
+        with:
+          path: "tsukune_ch.${{ env.ROLE_NAME }}"
+      - name: Setup python 3.x.
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+      - name: Install test dependencies.
+        run: >
+          pip3 install
+          ansible
+          ansible-lint
+          yamllint
+      - name: Lint code.
+        run: |
+          yamllint .
+          ansible-lint
   test:
     runs-on: ubuntu-20.04
     env:
