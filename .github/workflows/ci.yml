@@ -5,16 +5,17 @@ on:
   push:
   schedule:
     - cron: '0 5 * * 5'
+defaults:
+  run:
+    working-directory: 'tsukune_ch.canonical_livepatch'
 jobs:
   lint:
     runs-on: ubuntu-20.04
-    env:
-      ROLE_NAME: canonical_livepatch
     steps:
       - name: Checkout with the directory name of actual Ansible Galaxy role name.
         uses: actions/checkout@v2
         with:
-          path: "tsukune_ch.${{ env.ROLE_NAME }}"
+          path: 'tsukune_ch.canonical_livepatch'
       - name: Setup python 3.x.
         uses: actions/setup-python@v2
         with:
@@ -29,11 +30,8 @@ jobs:
         run: |
           yamllint .
           ansible-lint
-        working-directory: "tsukune_ch.${{ env.ROLE_NAME }}"
   test:
     runs-on: ubuntu-20.04
-    env:
-      ROLE_NAME: canonical_livepatch
     strategy:
       fail-fast: false
       matrix:
@@ -45,7 +43,7 @@ jobs:
       - name: Checkout with the directory name of actual Ansible Galaxy role name.
         uses: actions/checkout@v2
         with:
-          path: "tsukune_ch.${{ env.ROLE_NAME }}"
+          path: 'tsukune_ch.canonical_livepatch'
       - name: Setup python 3.x.
         uses: actions/setup-python@v2
         with:
@@ -66,4 +64,3 @@ jobs:
           MOLECULE_DISTRO: ${{ matrix.distro }}
         run: |
           molecule test
-        working-directory: "tsukune_ch.${{ env.ROLE_NAME }}"
