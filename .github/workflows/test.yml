@@ -13,7 +13,10 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        distro: [ubuntu1604, ubuntu1804, ubuntu2004]
+        distro:
+          - ubuntu1604
+          - ubuntu1804
+          - ubuntu2004
     steps:
       - name: Checkout with the directory name of actual Ansible Galaxy role name.
         uses: actions/checkout@v2
