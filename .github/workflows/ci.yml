@@ -29,6 +29,7 @@ jobs:
         run: |
           yamllint .
           ansible-lint
+        working-directory: "tsukune_ch.${{ env.ROLE_NAME }}"
   test:
     runs-on: ubuntu-20.04
     env:
