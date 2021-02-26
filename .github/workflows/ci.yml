@@ -52,11 +52,8 @@ jobs:
         run: >
           pip3 install
           ansible
-          ansible-lint
           docker
-          flake8
           'molecule[docker]>=3.2.3,<4.0'
-          yamllint
       - name: Run Molecule tests.
         env:
           PY_COLORS: '1'
