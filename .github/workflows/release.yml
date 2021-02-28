@@ -3,7 +3,7 @@
 # repository or organization secret.
 
 name: Release
-on:
+'on':
   push:
     tags:
       - '*'
