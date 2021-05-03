@@ -40,6 +40,7 @@ jobs:
       fail-fast: false
       matrix:
         distro:
+          - ubuntu1404
           - ubuntu1604
           - ubuntu1804
           - ubuntu2004
