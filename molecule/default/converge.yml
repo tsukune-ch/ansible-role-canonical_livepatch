@@ -4,6 +4,14 @@
   become: true
 
   pre_tasks:
+    - name: Ensure a broken PPA is deleted.
+      file:
+        path: /etc/apt/sources.list.d/jonathonf-python-2_7-trusty.list
+        state: absent
+      when:
+        - ansible_os_family == 'Debian'
+        - ansible_distribution_version == '14.04'
+
     - name: Update apt cache.
       apt:
         update_cache: true
