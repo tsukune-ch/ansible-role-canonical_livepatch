@@ -29,6 +29,11 @@
     state: started
     enabled: true
 
+- name: Ensure core is installed.
+  snap:
+    name: core
+    state: present
+
 - name: Ensure Canonical Livepatch is installed using the Snap Store.
   snap:
     name: canonical-livepatch
